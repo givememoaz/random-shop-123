@@ -1,132 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Nebula Clouds</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: url("nebula.png") no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-    }
-
-    .overlay {
-      background: rgba(5, 5, 20, 0.75);
-      min-height: 100vh;
-    }
-
-    header {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, #9d7cff, #5ee7ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    header p {
-      color: #cfcfff;
-      font-size: 1.1rem;
-    }
-
-    .products {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      padding: 40px;
-      flex-wrap: wrap;
-    }
-
-    .product {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 20px;
-      width: 220px;
-      box-shadow: 0 0 20px rgba(150, 120, 255, 0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .product:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 30px rgba(120, 200, 255, 0.6);
-    }
-
-    .price {
-      font-weight: bold;
-      margin: 10px 0;
-      color: #9dfffb;
-    }
-
-    button {
-      background: linear-gradient(90deg, #7f5cff, #4adede);
-      border: none;
-      color: black;
-      padding: 12px;
-      width: 100%;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 0 12px rgba(120, 200, 255, 0.7);
-      transition: box-shadow 0.3s, transform 0.2s;
-    }
-
-    button:hover {
-      box-shadow: 0 0 25px rgba(180, 255, 255, 1);
-      transform: scale(1.05);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="overlay">
+<div class="space-overlay">
 
 <header>
   <h1>Nebula Clouds</h1>
-  <p>Cosmic finds drifting through the universe ✨</p>
+  <p>Cosmic goods drifting through the universe ✨</p>
+  <button id="cart-btn">🛒 Cart (<span id="cart-count">0</span>)</button>
 </header>
 
-<main>
-  <section class="products">
-    <div class="product">
-      <h2>Starlight Item</h2>
-      <p>Mysterious cosmic object.</p>
-      <p class="price">$10.00</p>
-      <button onclick="buyItem('Starlight Item')">Buy</button>
-    </div>
+<main class="products">
+  <div class="product">
+    <h2>Starlight Core</h2>
+    <p>Condensed cosmic energy.</p>
+    <p class="price">$10</p>
+    <button onclick="addToCart('Starlight Core', 10)">Add to Cart</button>
+  </div>
 
-    <div class="product">
-      <h2>Nebula Relic</h2>
-      <p>Recovered from deep space.</p>
-      <p class="price">$15.00</p>
-      <button onclick="buyItem('Nebula Relic')">Buy</button>
-    </div>
-  </section>
+  <div class="product">
+    <h2>Nebula Relic</h2>
+    <p>Recovered from deep space.</p>
+    <p class="price">$15</p>
+    <button onclick="addToCart('Nebula Relic', 15)">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <h2>Void Fragment</h2>
+    <p>Mysterious and unstable.</p>
+    <p class="price">$25</p>
+    <button onclick="addToCart('Void Fragment', 25)">Add to Cart</button>
+  </div>
 </main>
 
+<!-- CART PANEL -->
+<div id="cart-panel">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+  <p class="total">Total: $<span id="cart-total">0</span></p>
+  <button class="checkout" onclick="checkout()">Checkout</button>
+</div>
+
 <footer>
-  <p>© 2026 Nebula Clouds</p>
+  © 2026 Nebula Clouds
 </footer>
 
 </div>
 
-<script>
-  function buyItem(itemName) {
-    alert(itemName + " added to cart 🚀\nCheckout system coming soon!");
-  }
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>

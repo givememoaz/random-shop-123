@@ -1,62 +1,100 @@
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-const cartPanel = document.getElementById("cart-panel");
-const cartBtn = document.getElementById("cart-btn");
-const cartItemsDiv = document.getElementById("cart-items");
-const cartTotalSpan = document.getElementById("cart-total");
-const cartCountSpan = document.getElementById("cart-count");
-
-cartBtn.onclick = () => {
-  cartPanel.classList.toggle("open");
-};
-
-function addToCart(name, price) {
-  const item = cart.find(i => i.name === name);
-  if (item) {
-    item.qty++;
-  } else {
-    cart.push({ name, price, qty: 1 });
-  }
-  saveCart();
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url("nebula.png") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
 }
 
-function removeItem(name) {
-  cart = cart.filter(i => i.name !== name);
-  saveCart();
+.overlay {
+  background: rgba(5, 5, 20, 0.85);
+  min-height: 100vh;
 }
 
-function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
+header {
+  text-align: center;
+  padding: 60px 20px;
 }
 
-function renderCart() {
-  cartItemsDiv.innerHTML = "";
-  let total = 0;
-  let count = 0;
-
-  cart.forEach(item => {
-    total += item.price * item.qty;
-    count += item.qty;
-
-    const div = document.createElement("div");
-    div.innerHTML = `
-      <p>${item.name} x${item.qty}</p>
-      <button onclick="removeItem('${item.name}')">Remove</button>
-    `;
-    cartItemsDiv.appendChild(div);
-  });
-
-  cartTotalSpan.textContent = total;
-  cartCountSpan.textContent = count;
+header h1 {
+  font-size: 3.5rem;
+  background: linear-gradient(90deg, #b18cff, #5ee7ff, #ff8fd4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-function checkout() {
-  alert(
-    "Checkout disabled.\n\n" +
-    "Real payments require an adult (18+).\n" +
-    "This cart system is fully functional."
-  );
+header p {
+  color: #cfcfff;
+  margin-top: 10px;
 }
 
-renderCart();
+.socials {
+  margin-top: 20px;
+}
+
+.socials a {
+  margin: 0 10px;
+  color: #9dfffb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.socials a:hover {
+  text-shadow: 0 0 10px #9dfffb;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 40px;
+}
+
+.product {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 25px;
+  width: 250px;
+  box-shadow: 0 0 25px rgba(150, 120, 255, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 40px rgba(180, 255, 255, 0.7);
+}
+
+.desc {
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+.price {
+  color: #9dfffb;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #7f5cff, #4adede);
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(120, 200, 255, 0.8);
+}
+
+button:hover {
+  box-shadow: 0 0 30px rgba(200, 255, 255, 1);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #aaa;
+  font-size: 0.9rem;
+}

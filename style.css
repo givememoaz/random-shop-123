@@ -1,50 +1,107 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+  font-family: 'Segoe UI', sans-serif;
+  background: url("nebula.png") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+.space-overlay {
+  background: rgba(5, 5, 20, 0.8);
+  min-height: 100vh;
 }
 
 header {
-  background: #111;
-  color: white;
   text-align: center;
-  padding: 20px;
+  padding: 40px;
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+
+header h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #9d7cff, #5ee7ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#cart-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #5ee7ff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .products {
   display: flex;
-  gap: 20px;
-  padding: 20px;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 40px;
 }
 
 .product {
-  background: white;
-  padding: 15px;
-  width: 200px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  width: 230px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(150,120,255,0.4);
+  transition: transform 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-8px);
 }
 
 .price {
+  color: #9dfffb;
   font-weight: bold;
 }
 
 button {
-  background: black;
-  color: white;
-  border: none;
-  padding: 10px;
   width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #7f5cff, #4adede);
   cursor: pointer;
+  font-weight: bold;
 }
 
-button:hover {
-  background: #444;
+#cart-panel {
+  position: fixed;
+  right: -320px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: rgba(10,10,30,0.95);
+  padding: 20px;
+  transition: right 0.4s ease;
+  box-shadow: -5px 0 30px rgba(100,150,255,0.5);
+}
+
+#cart-panel.open {
+  right: 0;
+}
+
+.total {
+  font-size: 1.2rem;
+  margin-top: 15px;
+}
+
+.checkout {
+  background: #5ee7ff;
+  margin-top: 20px;
 }
 
 footer {
   text-align: center;
-  padding: 10px;
-  color: #666;
+  padding: 15px;
+  color: #aaa;
 }
